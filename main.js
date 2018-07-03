@@ -3,21 +3,7 @@ window.jQuery = function (){
 }
 
 window.$=window.jQuery
-window.jQuery.ajax = function (options){
-    let url
-    if(arguments.length ===1){
-        url=options.url
-    }else if (arguments.length === 2 ){
-        url = arguments[0]
-        options=arguments[1]
-    }
-    let {method,headers,body,successFn,failFn} = options
-    // let method = options.method
-    // let headers = options.headers
-    // let body = options.body
-    // let successFn = options.successFn
-    // let failFn  = options.failFn
-
+window.jQuery.ajax = function ({url,method,headers,body,successFn,failFn}){
     let request = new XMLHttpRequest()
     request.open(method,url)
     for(let key in headers){
@@ -35,8 +21,6 @@ window.jQuery.ajax = function (options){
 
     request.send(body)
 }
-
-console.log(test)
 test.addEventListener('click',(e)=>{
     window.$.ajax({url:'/test',
      method: 'post',
